@@ -1,3 +1,5 @@
 .venv/
 .trunk/
 Pipfile.lock
+.env
+db.sqlite3
