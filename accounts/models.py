@@ -2,7 +2,12 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class UserAccount(AbstractUser):
-    def to_dict(self):
+    email = models.EmailField(blank=False, unique=True)
+
+    def __str__(self) -> str:
+        return self.username
+
+    def to_dict(self) -> dict[str, str]:
         return {
             "id": self.id,
             "username": self.username,

@@ -24,4 +24,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
 ]
 
+# Catch all route for react router
 urlpatterns += [re_path(r'^.*',), TemplateView.as_view(template_name='index.html')]
