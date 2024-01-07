@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'account',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -143,4 +143,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-AUTH_USER_MODEL = 'account.UserAccount'
+AUTH_USER_MODEL = 'accounts.UserAccount'
+
+# Only use in development
+CORS_ORIGIN_ALLOW_ALL=True
