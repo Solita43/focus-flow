@@ -1,12 +1,12 @@
--i https://pypi.org/simple
 argon2-cffi==23.1.0
-argon2-cffi-bindings==21.2.0 ; python_version >= '3.6'
-asgiref==3.7.2 ; python_version >= '3.7'
-cffi==1.16.0 ; python_version >= '3.8'
-django==4.2.9
+argon2-cffi-bindings==21.2.0
+asgiref==3.7.2
+cffi==1.16.0
+Django==4.2.9
+django-cors-headers==4.3.1
 djangorestframework==3.14.0
 pycparser==2.21
 python-dotenv==1.0.0
 pytz==2023.3.post1
-sqlparse==0.4.4 ; python_version >= '3.5'
-typing-extensions==4.9.0 ; python_version < '3.11'
+sqlparse==0.4.4
+typing_extensions==4.9.0
