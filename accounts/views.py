@@ -7,6 +7,15 @@ from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from .models import UserAccount
 
+class CheckAuthenticatedView(APIView):
+    def get(self, request, *args, **kwargs):
+        is_authenticated = request.user.is_authenticated
+        
+        if is_authenticated:
+            return Response(request.user.to_dict(), 200)
+        else:
+            return Response({"error": "User is not authenticated."})
+
 
 @method_decorator(csrf_protect, name="dispatch")
 class SignUpView(generics.CreateAPIView):
@@ -46,7 +55,7 @@ class SignUpView(generics.CreateAPIView):
 @method_decorator(csrf_protect, name="dispatch")
 class LoginView(APIView):
     """
-    Authenticate the user and log them in.
+    Authenticate the user and log them in by creating and setting a sessionid cookie.
 
     Expected Request Body:
     {
@@ -70,6 +79,9 @@ class LoginView(APIView):
 
 
 class LogoutView(APIView):
+    """
+    Clears the user sessionid cookie to log user out.
+    """
     def post(self, request, *args, **kwargs):
         logout(request)
         return Response({"message": "User successfully logged out!"}, 200)
