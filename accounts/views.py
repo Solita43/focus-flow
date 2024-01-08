@@ -38,15 +38,17 @@ class LoginView(APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
-        username = request.data['username']
+        email = request.data['email']
         password = request.data['password']
 
-        user = authenticate(username=username, password=password)
+        user = authenticate(email=email, password=password)
         if user is not None:
             login(request, user)
             return Response({'message': 'Login successful'}, status=200)
         else:
             return Response({'error': 'Invalid credentials'}, status=401)
+        
+@method_decorator
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')
 class GetCSRFToken(APIView):
