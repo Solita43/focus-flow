@@ -9,7 +9,7 @@ class SignUpSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserAccount
-        fields = ['username', 'email', 'password']
+        fields = ['username', 'email', 'password', 're_password']
         extra_kwargs = {
             'email': {
                 'validators': [UniqueValidator(queryset=UserAccount.objects.only('email'), message='Email address must be unique.')]
@@ -27,5 +27,5 @@ class SignUpSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Passwords do not match.")
 
         validate_password(password)  # Validate other password rules
-
+        data.pop('re_password')
         return data
