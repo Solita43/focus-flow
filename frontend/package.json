@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
+    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
     "redux-logger": "^3.0.6"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
