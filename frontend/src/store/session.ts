@@ -16,6 +16,11 @@ const initialState: SessionState = {
 
 /*----------------------------Thunks---------------------------------- */
 
+interface LoginResponse {
+    message: string;
+    data: UserData;
+}
+
 interface LoginPayload {
     email: string;
     password: string;
@@ -34,8 +39,8 @@ export const login = createAsyncThunk(
     });
 
     if (response.ok) {
-      const data: UserData = await response.json();
-      return data;
+      const data: LoginResponse = await response.json();
+      return data.data;
     } else if (response.status < 500) {
       const data = await response.json();
       // Handle errors if needed
